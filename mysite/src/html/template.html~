@@ -22,7 +22,7 @@ div.coment {background:#FFFFFF;width:89%;height:18%;position:relative;top:2%;lef
 
 <div id='main'>
     <div class='coment'>
-	<form id=tweet method="get" action="/twitter/post_comment/">
+	<form id=tweet method='post' action='/twitter/post_comment/'>
 	    <textarea class='forms' rows=6 cols=58 name='text'></textarea>
 	    <input type='submit' value="Comentar" class='forms'>
 	</form>
