@@ -11,7 +11,6 @@ from mysite.twitter.views import comment
 
 urlpatterns = patterns('',
     (r'^twitter/$', twitter),
-    (r'^twitter/post_comment/',comment) 
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^mysite/', include('mysite.foo.urls')),
