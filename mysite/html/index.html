@@ -1,27 +1,8 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="/static/index.css" />
-  <script src="/static/jquery-git.js" type="text/javascript"></script>
-  
-  <script type="text/javascript">
-      
-      $("input").click(function(){
-	   var value = $("textarea").attr("value")
-	      if (value.length > 70)
-		{
-		    alert("Comentário Muito Grande")
-		    $("textarea").text(value)
-		}
-      })
-//TODO Mostrar Tamanho do Comentário
-//       $("textarea").keyup(function () {
-//       var value = $(this).val();
-//       var length = $("#length").text(value.length(value));
-//            if (length > 70)
-// 	      $("#length").css("font-color","red");
-//     }).keyup();
-      
-  </script>
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js" type="text/javascript"></script>
+  <script src="/static/index.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -30,14 +11,13 @@
 
 <div id='main'>
     
-	<form id=tweet method="get" action="/twitter/post_comment/">
-	    <textarea class='forms' rows=6 cols=58 name='text' style='width:100%'></textarea>
-	    <input type='submit' value="Comentar" class='forms'>
-	    <div id='length'></div>
+	<form id=tweet method='get'>
+	    <textarea id='comment_textarea' class='forms' rows=6 cols=58 name='text' style='width:100%'></textarea>
+	    <input id='comment_submit' type='submit' value="Comentar" class='forms'>
 	</form>
     
     
-    {% for i in list %} 
+    {% for i in comments %} 
     <div class='coment'>{{i.date}}<br>{{i.text}}</div>
     {% endfor %}
     
