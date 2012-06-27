@@ -1,19 +1,15 @@
 # -*- coding: utf-8 -*-
 # Create your views here.
-from time import gmtime, strftime
-from mysite.twitter.models import Comments
+from datetime import date
+from mysite.twitter.views import comment,retrieve
 from django.shortcuts import render_to_response
 
 def twitter(request):
-  
-  date = strftime("%a, %d %b %Y %H:%M:%S", gmtime())
-  
-  comments = Comments.objects.all()
-  
-  comments.reverse()
-  
-  return render_to_response('mysite/html/index.html', {'date':date, 'list':comments})
+  _date = date.today()
+  if request.is_ajax():
+    comment = request.GET.get('text','')	
+    if comment and comment<70:
+      comment(comment,data)
+  comments = retrieve()
+  return render_to_response('mysite/html/index.html', {'date':_date, 'comments':comments})
 
-
-  
-  
