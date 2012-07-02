@@ -4,7 +4,6 @@ $(document).ready(function(){
 			if (q.length > 70)
 				alert(q);	
 			else
-				alert(q)
 				$(document).load('post_twitter/'+q+'/');
 	})
  });
