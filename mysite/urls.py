@@ -11,7 +11,7 @@ from mysite.main.views import twitter,post_twitter
 
 urlpatterns = patterns('',
     (r'^twitter/$', twitter),
-    (r'^twitter/post_twitter/(\w+)/$',post_twitter),
+    (r'^twitter/post_twitter/(?P<text>\w+)/$',post_twitter),
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^mysite/', include('mysite.foo.urls')),
