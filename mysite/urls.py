@@ -2,8 +2,8 @@
 from django.conf.urls import patterns, include, url
 from django.conf.urls.defaults import *
 
-from mysite.main.views import twitter
-from mysite.twitter.views import comment
+from mysite.main.views import twitter,post_twitter
+
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -11,6 +11,7 @@ from mysite.twitter.views import comment
 
 urlpatterns = patterns('',
     (r'^twitter/$', twitter),
+    (r'^twitter/post_twitter/(\w+)/$',post_twitter),
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^mysite/', include('mysite.foo.urls')),
