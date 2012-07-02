@@ -15,6 +15,7 @@ def twitter(request):
   
 def post_twitter(request,text):
   if request.isAjax():
-    comment(text,_date)
+    if text:
+      comment(text,_date)
   HttpResponseRedirect('/twitter/')  
   
