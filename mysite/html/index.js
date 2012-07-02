@@ -5,7 +5,7 @@ $(document).ready(function(){
 				alert(q);	
 			else
 				alert(q)
-				$(document).load('post_twitter/?text='+q);
+				$(document).load('post_twitter/'+q+'/');
 	})
  });
 
