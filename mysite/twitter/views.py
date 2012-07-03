@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 
 def comment(text,date):
   #processamento
+  text = text.replace('+',' ')
   c = Comments(date=today,author='',text=comment)
   c.save()
 
