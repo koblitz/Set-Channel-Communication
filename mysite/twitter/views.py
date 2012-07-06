@@ -5,14 +5,12 @@ from django.http import HttpResponseRedirect
 
 
 def comment(text,date):
-  #processamento
-  text = text.replace('+',' ')
-  c = Comments(date=today,author='',text=comment)
+  c = Comments(date=date,author='',text=text)
   c.save()
 
 def retrieve():
-  comments = Comments.objects.all()
-  return comments.reverse()
+  comments = Comments.objects.order_by("-id")
+  return comments
     	
       		
   
