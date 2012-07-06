@@ -13,9 +13,9 @@ def twitter(request):
   comments = retrieve()
   return render_to_response('mysite/html/index.html', {'date':_date, 'comments':comments})
   
-def post_twitter(request,text):
-  if request.isAjax():
-    if text:
+def post_twitter(request):
+  text = request.GET.get('text', '')
+  if text and len(text)<=70:
       comment(text,_date)
-  HttpResponseRedirect('/twitter/')  
+  return HttpResponseRedirect('/twitter/')  
   
