@@ -1,0 +1,8 @@
+#main { top:30%; left:5%; position:relative}
+      
+#header {background:#006400; width:35%;height:6%; position:relative;left:27%;
+	 text-align:center;text-transform:capitalize;color:#FFFFFF;letter-spacing:3px;font-size:20px}
+
+form.tweet {background:#00CC00;width:35%;position:relative;left:27%;text-align:center}
+
+form.tweet textarea,input {border: solid thick black;border-radius: 1em;border-width:1px}
