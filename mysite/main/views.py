@@ -9,9 +9,11 @@ from django.http import HttpResponseRedirect
 _date = date.today()
 
 def twitter(request):
-  
-  comments = retrieve()
-  return render_to_response('mysite/html/index.html', {'date':_date, 'comments':comments})
+  if request.user.is_authenticated():
+    comments = retrieve()
+    return render_to_response('mysite/html/index.html', {'date':_date, 'comments':comments})
+  else:
+    return render_to_response('mysite/html/login.html', {'date':_date})
   
 def post_twitter(request):
   text = request.GET.get('text', '')
