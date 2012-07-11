@@ -2,7 +2,7 @@
 from django.conf.urls import patterns, include, url
 from django.conf.urls.defaults import *
 
-from mysite.main.views import twitter,post_twitter
+from mysite.main.views import twitter,post_twitter,login
 
 
 # Uncomment the next two lines to enable the admin:
@@ -12,6 +12,7 @@ from mysite.main.views import twitter,post_twitter
 urlpatterns = patterns('',
     (r'^twitter/$', twitter),
     (r'^twitter/post_twitter/$',post_twitter),
+    (r'^twitter/login/$',login),
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^mysite/', include('mysite.foo.urls')),
@@ -20,5 +21,5 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    #url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 )
