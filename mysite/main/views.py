@@ -12,7 +12,7 @@ _date = date.today()
 def twitter(request):
   if request.user.is_authenticated():
     comments = retrieve()
-    return render_to_response('mysite/html/index.html', {'date':_date, 'comments':comments})
+    return render_to_response('mysite/html/index.html', {'date':_date, 'comments':comments, 'user':request.user.username})
   else:
     return render_to_response('mysite/html/login.html', {'date':_date})
   
@@ -23,6 +23,17 @@ def post_twitter(request):
   return HttpResponseRedirect('/twitter/')
   
 def login(request):
-  user = request.POST.get('login', '')
+  username = request.POST.get('login', '')
   passwd = request.POST.get('passwd','')
+  #cria um objeto user
+  user = auth.authenticate(username=username, password=passwd)
+  if user is not None and user.is_active:
+    auth.login(request, user)
+  return HttpResponseRedirect("/twitter/")
+ 
+    
+
+
+
+
   
