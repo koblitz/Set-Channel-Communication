@@ -19,17 +19,22 @@ def twitter(request):
 def post_twitter(request):
   text = request.GET.get('text', '')
   if text and len(text)<=70:
-      comment(text,_date)
+      comment(text,request.user.username,_date)
   return HttpResponseRedirect('/twitter/')
   
 def login(request):
-  username = request.POST.get('login', '')
-  passwd = request.POST.get('passwd','')
+  username = request.GET['login']
+  passwd = request.GET['passwd']
   #cria um objeto user
   user = auth.authenticate(username=username, password=passwd)
   if user is not None and user.is_active:
     auth.login(request, user)
   return HttpResponseRedirect("/twitter/")
+  
+def logout(request):
+  auth.logout(request)
+  return HttpResponseRedirect("/twitter/")
+
  
     
 
