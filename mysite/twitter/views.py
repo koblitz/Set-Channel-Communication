@@ -4,8 +4,8 @@ from models import Comments
 from django.http import HttpResponseRedirect
 
 
-def comment(text,date):
-  c = Comments(date=date,author='',text=text)
+def comment(text,author,date):
+  c = Comments(date=date,author=author,text=text)
   c.save()
 
 def retrieve():
