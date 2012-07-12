@@ -1,3 +1,9 @@
+#menu   {background:#006400; width:45%;height:3%; position:relative;left:27%;
+	  text-align:center;text-transform:capitalize;color:#FFFFFF;letter-spacing:3px;font-size:12px}
+	  
+#menu a { text-decoration:none;color:#FFFFFF;}
+
+#menu a:hover {color:#000000}
 
 #header {background:#006400; width:45%;height:10%; position:relative;top:2%;left:27%;
 	  text-align:center;text-transform:capitalize;color:#FFFFFF;letter-spacing:3px;font-size:25px}
