@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
 from datetime import date
 from mysite.twitter.views import comment,retrieve
 
@@ -22,9 +23,10 @@ def post_twitter(request):
       comment(text,request.user.username,_date)
   return HttpResponseRedirect('/twitter/')
   
+@csrf_exempt
 def login(request):
-  username = request.GET['login']
-  passwd = request.GET['passwd']
+  username = request.POST['login']
+  passwd = request.POST['passwd']
   #cria um objeto user
   user = auth.authenticate(username=username, password=passwd)
   if user is not None and user.is_active:
