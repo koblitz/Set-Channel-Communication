@@ -1,20 +1,13 @@
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="/static/index.css" />
-  <script src="http://code.jquery.com/jquery-1.7.2.min.js" type="text/javascript"></script>
-  <script src="/static/index.js" type="text/javascript"></script>
+{% extends "default.html" %}
 
-</head>
-<body>
+{% block menu %}
+  {% if user %}
+      <div id='menu'>Acesando como: {{user}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='logout/'>Sair</a></div>
+  {% endif %}
+{% endblock %}
 
-{% if user %}
-<div id='menu'>Acesando como: {{user}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='logout/'>Sair</a></div>
-{% endif %}
 
-<div id='header'> Set Channel Communication <br>{{date}} </div>
-
-<div id='main'>
-    
+   {% block main %}
 	<form class='tweet' method='get' action='post_twitter/'>
 	    <textarea id='comment_textarea' class='forms' rows=6 cols=58 name='text' style='width:100%'></textarea>
 	    <input type=submit id='comment_submit' value="Comentar" class='forms'>
@@ -30,8 +23,7 @@
 	  {{i.text}}
       </div>
     {% endfor %}
-    
-</div>
+  {% endblock %} 
 
-</body>
-</html>
+
+
