@@ -7,6 +7,7 @@ from mysite.twitter.views import comment,retrieve
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.contrib import auth
+from django.contrib.auth.models import User
 
 _date = date.today()
 
@@ -36,6 +37,16 @@ def login(request):
 def logout(request):
   auth.logout(request)
   return HttpResponseRedirect("/twitter/")
+
+@csrf_exempt
+def register(request):
+  username = request.POST['new_login']
+  passwd = request.POST['new_passwd']
+  user = User.objects.create_user(username=username,password=passwd)
+  return HttpResponseRedirect('/twitter/')
+
+  
+  
 
  
     
