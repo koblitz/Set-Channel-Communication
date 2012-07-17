@@ -1,0 +1,25 @@
+#menu   {background:#006400; width:45%;height:3%; position:relative;left:27%;
+	  text-align:center;text-transform:capitalize;color:#FFFFFF;letter-spacing:3px;font-size:12px}
+	  
+#menu a { text-decoration:none;color:#FFFFFF;}
+
+#menu a:hover {color:#000000}
+
+#header {background:#006400; width:45%;height:10%; position:relative;top:2%;left:27%;
+	  text-align:center;text-transform:capitalize;color:#FFFFFF;letter-spacing:3px;font-size:25px}
+
+#main {background:#228B22;width:45%;position:relative;top:3%;left:27%}
+
+div.coment {background:#FFFFFF;width:89%;height:10%;position:relative;top:2%;left:5%;margin:1%;
+            border: solid thick white;padding:3px;
+	    border-radius: 1em;border-width:1px}
+
+form.tweet textarea,input {border: solid thick black;
+		       border-radius: 1em;border-width:1px}
+		       
+
+#tweet {text-align:center;background:#FFFFFF;width:89%;height:15%;position:relative;top:2%;left:5%;margin:1%;
+        border: solid thick white;
+	border-radius: 1em;border-width:0.1px}
+
+
