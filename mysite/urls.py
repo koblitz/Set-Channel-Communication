@@ -13,4 +13,5 @@ urlpatterns = patterns('mysite.main.views',
     (r'^twitter/login/$','login'),
     (r'^twitter/logout/$','logout'),
     (r'^twitter/register/$','register'),
+    (r'^twitter/register/create_user/$','create_user'),
 )
