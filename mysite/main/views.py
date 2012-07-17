@@ -39,11 +39,14 @@ def logout(request):
   return HttpResponseRedirect("/twitter/")
 
 @csrf_exempt
-def register(request):
+def create_user(request):
   username = request.POST['new_login']
   passwd = request.POST['new_passwd']
   user = User.objects.create_user(username=username,password=passwd)
   return HttpResponseRedirect('/twitter/')
+  
+def register(request):
+  return render_to_response('mysite/html/register.html')
 
   
   
