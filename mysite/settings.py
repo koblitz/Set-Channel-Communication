@@ -90,7 +90,7 @@ SECRET_KEY = '(l+k1paougtj1kfb8ss11v3+87#abgqub2n7rk#6$6vt(_y71t'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -115,6 +115,15 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = ( "django.contrib.auth.context_processors.auth",
+      	                        "django.core.context_processors.debug",
+	  	                        "django.core.context_processors.i18n",
+	                            "django.core.context_processors.media",
+	  	                        "django.core.context_processors.static",
+	  	                        "django.core.context_processors.tz",
+                                "django.core.context_processors.request",
+	  	                        "django.contrib.messages.context_processors.messages")
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -123,6 +132,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dajaxice',
     'mysite.twitter',
     'mysite.main' ,
     # Uncomment the next line to enable the admin:
@@ -137,6 +147,11 @@ Medida de Segurança visto que o SCC trabalha com senhas e logins, então é nec
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+'''
+ DAJAX
+'''
+DAJAXICE_MEDIA_PREFIX="dajaxice"
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
