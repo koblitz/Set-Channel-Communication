@@ -131,7 +131,12 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 )
 
+'''
+Medida de Segurança visto que o SCC trabalha com senhas e logins, então é necessário o uso de conexões HTTPS
+'''
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
