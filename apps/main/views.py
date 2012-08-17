@@ -17,9 +17,9 @@ _date = date.today()
 def twitter(request):
   if request.user.is_authenticated():
     comments = retrieve()
-    return render_to_response('static/html/index.html', {'date':_date, 'comments':comments, 'user':request.user.username})
+    return render_to_response('index.html', {'date':_date, 'comments':comments, 'user':request.user.username})
   else:
-    return render_to_response('static/html/login.html', {'date':_date})
+    return render_to_response('login.html', {'date':_date})
 
 #Metodo Ajax  
 def post_twitter(request):
@@ -28,7 +28,7 @@ def post_twitter(request):
     if text and len(text)<=70:
       comment(text,request.user.username,_date)
     comments = retrieve()
-    refresh = get_template('static/html/index',Context({'date':_date, 'comments':comments, 'user':request.user.username}))
+    refresh = get_template('index.html',Context({'date':_date, 'comments':comments, 'user':request.user.username}))
     return HttpResponse(refresh.render())
 
 @csrf_exempt
@@ -53,7 +53,7 @@ def create_user(request):
   return HttpResponseRedirect('/twitter/')
   
 def register(request):
-  return render_to_response('static/html/register.html')
+  return render_to_response('register.html')
 
   
   

@@ -7,7 +7,7 @@ from django.conf.urls.defaults import *
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('mysite.main.views',
+urlpatterns = patterns('apps.main.views',
     (r'^twitter/$','twitter'),
     (r'^twitter/post_twitter/$','post_twitter'),
     (r'^twitter/login/$','login'),

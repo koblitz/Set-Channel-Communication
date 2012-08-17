@@ -1,19 +1,22 @@
  
  $(document).ready(function(){
-	$('#comment_submit').submit(function() {
+	$('form').submit(function() {
 		q = $('#comment_textarea').val();
 			if (q.length > 70)
 				alert('Seu Tweet precisa ter menos que 70 caracteres!');	
 			else
-				  $.ajax({
+				  
+			      $.ajax(
 					    type: "GET",
                                             url:"post_twitter/",
+					    context: document.body,
+					    crossDomain: true,
 					    data:{
                                                    'text':q,
                                                  },
                                             success: function(data){
-                                                       $('body').html(data);
+                                                       alert('Sucesso');
                                                           }
-                                        });
+                                        );
 	})
  });
