@@ -69,7 +69,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    'mysite/html/',
+    'static/',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -90,7 +90,7 @@ SECRET_KEY = '(l+k1paougtj1kfb8ss11v3+87#abgqub2n7rk#6$6vt(_y71t'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-    'django.template.loaders.eggs.Loader',
+    #'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -103,10 +103,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'mysite.urls'
+ROOT_URLCONF = 'conf.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'mysite.wsgi.application'
+WSGI_APPLICATION = 'deploy.wsgi.application'
 
 TEMPLATE_DIRS = (
     '.',
@@ -115,14 +115,6 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = ( "django.contrib.auth.context_processors.auth",
-      	                        "django.core.context_processors.debug",
-	  	                        "django.core.context_processors.i18n",
-	                            "django.core.context_processors.media",
-	  	                        "django.core.context_processors.static",
-	  	                        "django.core.context_processors.tz",
-                                "django.core.context_processors.request",
-	  	                        "django.contrib.messages.context_processors.messages")
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -132,9 +124,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dajaxice',
-    'mysite.twitter',
-    'mysite.main' ,
+    'apps.twitter',
+    'apps.main' ,
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -144,14 +135,10 @@ INSTALLED_APPS = (
 '''
 Medida de Segurança visto que o SCC trabalha com senhas e logins, então é necessário o uso de conexões HTTPS
 '''
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
 
-'''
- DAJAX
-'''
-DAJAXICE_MEDIA_PREFIX="dajaxice"
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

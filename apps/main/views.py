@@ -2,11 +2,14 @@
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 from datetime import date
-from mysite.twitter.views import comment,retrieve
+from apps.twitter.views import comment,retrieve
 
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect
+from django.template.loader import get_template
+from django.template import Context
+from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib import auth
+
 from django.contrib.auth.models import User
 
 _date = date.today()
@@ -14,16 +17,20 @@ _date = date.today()
 def twitter(request):
   if request.user.is_authenticated():
     comments = retrieve()
-    return render_to_response('mysite/html/index.html', {'date':_date, 'comments':comments, 'user':request.user.username})
+    return render_to_response('static/html/index.html', {'date':_date, 'comments':comments, 'user':request.user.username})
   else:
-    return render_to_response('mysite/html/login.html', {'date':_date})
-  
+    return render_to_response('static/html/login.html', {'date':_date})
+
+#Metodo Ajax  
 def post_twitter(request):
-  text = request.GET.get('text', '')
-  if text and len(text)<=70:
+  if request.is_ajax():
+    text = request.GET.get('text', '')
+    if text and len(text)<=70:
       comment(text,request.user.username,_date)
-  return HttpResponseRedirect('/twitter/')
-  
+    comments = retrieve()
+    refresh = get_template('static/html/index',Context({'date':_date, 'comments':comments, 'user':request.user.username}))
+    return HttpResponse(refresh.render())
+
 @csrf_exempt
 def login(request):
   username = request.POST['login']
@@ -46,7 +53,7 @@ def create_user(request):
   return HttpResponseRedirect('/twitter/')
   
 def register(request):
-  return render_to_response('mysite/html/register.html')
+  return render_to_response('static/html/register.html')
 
   
   

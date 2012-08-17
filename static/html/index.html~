@@ -8,9 +8,9 @@
 
 
    {% block main %}
-	<form class='tweet' method='get' action='post_twitter/'>
+	<form class='tweet' action='post_twitter/'>
 	    <textarea id='comment_textarea' class='forms' rows=6 cols=58 name='text' style='width:100%'></textarea>
-	    <input type=submit id='comment_submit' value="Comentar" class='forms'>
+	    <input type='submit'  id='comment_submit' value="Comentar" class='forms'>
 	</form>
     
     
