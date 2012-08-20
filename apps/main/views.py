@@ -2,12 +2,11 @@
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 from datetime import date
-from apps.twitter.views import comment,retrieve
+from apps.twitter.views import retrieve
 
 from django.shortcuts import render_to_response
-from django.template.loader import get_template
 from django.template import Context
-from django.http import HttpResponseRedirect,HttpResponse
+from django.http import HttpResponseRedirect
 from django.contrib import auth
 
 from django.contrib.auth.models import User
@@ -20,16 +19,6 @@ def twitter(request):
     return render_to_response('index.html', {'date':_date, 'comments':comments, 'user':request.user.username})
   else:
     return render_to_response('login.html', {'date':_date})
-
-#Metodo Ajax  
-def post_twitter(request):
-  if request.is_ajax():
-    text = request.GET.get('text', '')
-    if text and len(text)<=70:
-      comment(text,request.user.username,_date)
-    comments = retrieve()
-    refresh = get_template('index.html',Context({'date':_date, 'comments':comments, 'user':request.user.username}))
-    return HttpResponse(refresh.render())
 
 @csrf_exempt
 def login(request):
