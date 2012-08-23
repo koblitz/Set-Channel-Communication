@@ -1,5 +1,10 @@
 {% extends "default.html" %}
 
+{% block scripts/css %}
+<link rel="stylesheet" type="text/css" href="/static/index.css" />
+<script src="/static/index.js" type="text/javascript"></script>
+{% endblock %}
+
 {% block menu %}
   {% if user %}
       <div id='menu'>Acesando como: {{user}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='logout/'>Sair</a></div>
@@ -8,10 +13,10 @@
 
 
    {% block main %}
-	<div class='tweet'>
-	    <textarea id='comment_textarea' class='forms' rows=6 cols=58 name='text' style='width:100%'></textarea>
-	    <button id='comment_submit' value="Comentar" class='forms'>
-	</div>
+	<form class='tweet'>
+	    <textarea id='comment_textarea' rows=6 cols=58 name='text' style='width:100%'></textarea>
+	    <button id='comment_submit' onclick='send_comment();'>Comentar</button>
+	</form>
     
     
     {% for i in comments %} 

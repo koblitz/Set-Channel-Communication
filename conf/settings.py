@@ -117,6 +117,17 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages'
+)
+
+DAJAXICE_MEDIA_PREFIX="dajaxice"
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -127,8 +138,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.twitter',
-    'apps.main' ,
-    'dajaxice' ,
+    'apps.main',
+    'dajaxice',
+    'dajax', 
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -168,6 +180,6 @@ LOGGING = {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
             'propagate': True,
-        },
-    }
-}
+        }
+    },
+ }
