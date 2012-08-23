@@ -7,13 +7,13 @@ from dajax.core import Dajax
 from dajaxice.decorators import dajaxice_register
 
 @dajaxice_register
-def post_twitter(request,text):
- 
+def post_twitter(request):
+  text = request.GET['text']
   if text and len(text)<=70:
     comment(text,request.user.username,_date)
     comments = retrieve()
     refresh = render_to_string('index.html',Context({'date':_date, 'comments':comments, 'user':request.user.username}))
     
     dajax = Dajax()
-    dajax.assign('document.body','innerHTML',refresh)
+    dajax.assign('body','innerHTML',refresh)
     return dajax.json()
