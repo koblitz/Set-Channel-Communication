@@ -126,6 +126,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages'
+    'django.contrib.messages.context_processors.request'
 )
 
 DAJAXICE_MEDIA_PREFIX="dajaxice"
@@ -174,13 +175,23 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
-        }
+        },
+        'logfile': {
+	    'level': 'DEBUG',
+	    'class': 'logging.FileHandler',
+	    'filename': 'log/django.log'
+    }, 
     },
     'loggers': {
         'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
+            'handlers': ['logfile'],
+            'level': 'DEBUG',
             'propagate': True,
-        }
+        },
+        'dajaxice': {
+	    'handlers': ['logfile'],
+	    'level': 'DEBUG',
+	    'propagate': True,
+	}
     },
  }

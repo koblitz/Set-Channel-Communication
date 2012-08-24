@@ -8,6 +8,7 @@ from dajaxice.decorators import dajaxice_register
 
 @dajaxice_register
 def post_twitter(request):
+  print "ois"
   text = request.GET['text']
   if text and len(text)<=70:
     comment(text,request.user.username,_date)
