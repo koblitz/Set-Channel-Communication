@@ -12,7 +12,7 @@ def twitter(request):
   
   comments.reverse()
   
-  return render_to_response('mysite/src/html/index.html', {'date':date, 'list':comments})
+  return render_to_response('mysite/html/index.html', {'date':date, 'list':comments})
 
 
   
