@@ -9,7 +9,9 @@ def comment(request):
   comment = request.GET.get('text','')
   if comment:
     today = date.today()
-    c = Comments(date=today,author='',text=comment)
-    c.save()
+  if len(comment)>70:
+    return HttpResponseRedirect('/twitter/')
+  c = Comments(date=today,author='',text=comment)
+  c.save()
   return HttpResponseRedirect('/twitter/')
   
